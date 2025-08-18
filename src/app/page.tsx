@@ -1,6 +1,10 @@
+ import Categories from './components/Categories'
+import'./globals.css'
 const Homepage = () => {
   return (
-    <div className=''>Homepage</div>
+    <>
+    {/* <Categories /> */}
+    </>
   )
 }
 

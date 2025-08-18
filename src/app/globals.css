@@ -1,1 +1,34 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --background: #ffffff;
+  --foreground: #333333;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --primary: #522ffe;
+   --card:#ffffff;
+}
+
+.dark{
+    --background: #030304;
+    --foreground: #fffff;
+    --primary:#522ffe;
+    --card:#1d1d1d;
+  }
+
+
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+@layer components{
+  .card-shadow{
+    @apply shadow-[0_3px_10px_rgb(0,0,0,o.2)];
+  }
+}
