@@ -4,8 +4,9 @@ import { CartStoreStateType, CartStoreActionType, CartItemType } from "../types"
 
 const useCartStore = create<CartStoreStateType & CartStoreActionType>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       cart: [] as CartItemType[],
+      hasHaydrated: false,
 
       addToCart: (product: CartItemType) => {
         set((state) => {
@@ -43,10 +44,17 @@ const useCartStore = create<CartStoreStateType & CartStoreActionType>()(
       },
 
       clearCart: () => set({ cart: [] }),
+
+      setHasHaydrated: (value: boolean) => set({ hasHaydrated: value }),
     }),
     {
       name: "cart-storage",
       storage: createJSONStorage(() => localStorage),
+      onRehydrateStorage: () => (state) => {
+ if(state){
+  state.hasHaydrated = true;
+ }
+      },
     }
   )
 );

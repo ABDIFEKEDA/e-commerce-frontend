@@ -145,6 +145,7 @@ const ProductList = ({
             className="border p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             <ProductCard Product={product} />
+            
           </div>
         ))}
       </div>

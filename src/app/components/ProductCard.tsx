@@ -62,18 +62,18 @@ const ProductCard = ({ Product }: ProductCardProps) => {
       <ToastContainer />
       
       <div className="shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-        <Link href={`/products/${Product.id}`} className="block">
-          <div className="relative aspect-[3/4] w-full">
-            <Image
-              src={imageSrc}
-              alt={Product.name}
-              fill
-              className="object-cover hover:opacity-90 transition-opacity"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority={false}
-            />
-          </div>
-        </Link>
+       <Link href={`/products/${Product.id}`} className="block">
+  <div className="relative aspect-[3/4] w-full">
+    <Image
+      src={imageSrc}
+      alt={Product.name}
+      fill
+      className="object-cover hover:opacity-90 transition-opacity"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      priority={false}
+    />
+  </div>
+</Link>
 
         <div className="p-4 space-y-3">
           <h1 className="font-medium text-lg">{Product.name}</h1>
@@ -127,7 +127,7 @@ const ProductCard = ({ Product }: ProductCardProps) => {
               className="flex items-center gap-1 ring-1 ring-gray-200 shadow-lg rounded-md px-3 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-colors duration-200"
               onClick={handleAddToCart}
             >
-              <ShoppingCart className="w-4 h-4" />
+              <ShoppingCart className="w-4 h-4"  />
               Add to Cart
             </button>
           </div>
