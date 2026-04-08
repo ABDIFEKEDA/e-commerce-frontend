@@ -74,8 +74,8 @@ const CartPage = () => {
                   <div className="relative w-32 h-32 bg-gray-50 rounded-lg overflow-hidden mt-2 ml-2 mb-2">
                     <Image
                       src={
-                        item.image[item.selectColor as keyof typeof item.image] ||
-                        ""
+                        item.image[item.selectColor.toLowerCase() as keyof typeof item.image] ||
+                        Object.values(item.image)[0]
                       }
                       alt={item.name}
                       fill

@@ -56,15 +56,25 @@ export const categories = [
   },
 ];
 
-const Categories = () => {
+const Categories = ({
+  selectedCategory,
+  onClick,
+}: {
+  selectedCategory?: string;
+  onClick?: (value: string | null) => void;
+}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const selectedCategory = searchParams.get("category");
+  const activeCategory = selectedCategory ?? searchParams.get("category") ?? "all";
 
   const handleChange = (value: string | null) => {
+    if (onClick) {
+      onClick(value);
+      return;
+    }
     const params = new URLSearchParams(searchParams.toString());
-    if (value) {
+    if (value && value !== "all") {
       params.set("category", value);
     } else {
       params.delete("category");
@@ -79,7 +89,7 @@ const Categories = () => {
           key={category.name}
           onClick={() => handleChange(category.slug)}
           className={`flex items-center gap-2 cursor-pointer px-2 py-1 rounded-md transition-colors duration-200 ${
-            category.slug === selectedCategory
+            category.slug === activeCategory
               ? "bg-white text-black shadow"
               : "text-gray-500 hover:bg-gray-200"
           }`}

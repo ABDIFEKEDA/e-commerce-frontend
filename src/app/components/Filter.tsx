@@ -12,7 +12,7 @@ const Filter = () => {
     if (value ) {
       newParams.set("sort", value);
     } else {
-      newParams.delete("category");
+      newParams.delete("sort");
     }
     router.push(`${pathname}?${newParams.toString()}`, { scroll: false });
   };
@@ -26,7 +26,7 @@ const Filter = () => {
         className="border rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
       >
         <option value="newest">Newest</option>
-        <option value="newest">Oldest</option>
+        <option value="oldest">Oldest</option>
         <option value="ascending">Price: low to high</option>
         <option value="descending">High to low</option>
       </select>

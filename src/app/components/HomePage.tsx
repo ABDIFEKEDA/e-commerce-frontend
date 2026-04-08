@@ -3,18 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import ProductList from "./ProductList";
-import Filter from "./Filter";
-import  useCartStore  from "../stores/stores"; // Adjust the import path
 
-interface HomePageProps {
-  searchParams?: {
-    category?: string;
-  };
-}
-
-const HomePage = ({ searchParams = {} }: HomePageProps) => {
-  // Initialize cart store
-  const { cart } = useCartStore();
+const HomePage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -33,14 +23,7 @@ const HomePage = ({ searchParams = {} }: HomePageProps) => {
 
       {/* Filter and Product List Section */}
       <div className="flex flex-col gap-8">
-        <div className="flex justify-end">
-          <Filter />
-        </div>
-        
-        <ProductList 
-          category={searchParams?.category || "all"} 
-          params="home"
-        />
+        <ProductList params="HomePage" />
       </div>
     </div>
   );
