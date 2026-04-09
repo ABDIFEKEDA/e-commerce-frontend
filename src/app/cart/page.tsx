@@ -114,7 +114,7 @@ const CartPage = () => {
           {activeStep === 2 && (
             <div>
               <ShippingForm
-                onSubmit={(data) => {
+                onSubmit={(data: ShippingFormInputs) => {
                   setShippingData(data);
                 }}
               />
@@ -134,7 +134,7 @@ const CartPage = () => {
           {/* Step 3: Payment Form */}
           {activeStep === 3 && (
             <PaymentForm
-              onSubmit={(data) => {
+              onSubmit={(data: PaymentFormInputs) => {
                 setPaymentData(data);
                 console.log("Order complete!", { shippingData, paymentData });
               }}
