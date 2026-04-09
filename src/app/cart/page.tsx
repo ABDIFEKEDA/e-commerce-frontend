@@ -22,7 +22,7 @@ const CartPage = () => {
   const [shippingData, setShippingData] = useState<ShippingFormInputs>();
   const [paymentData, setPaymentData] = useState<PaymentFormInputs>();
 
-  // ✅ FIRST get cart from Zustand
+ 
   const { cart, removeFromCart, clearCart } = useCartStore();
 
  
@@ -30,7 +30,7 @@ const CartPage = () => {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  const discount = subtotal * 0.1; // 10% discount
+  const discount = subtotal * 0.1; 
   const shippingFee = 10.0;
   const total = subtotal - discount + shippingFee;
 
@@ -38,11 +38,11 @@ const CartPage = () => {
     <div className="flex flex-col gap-8 items-center justify-center mt-12">
       <h1 className="text-2xl font-medium">Your Shopping Cart</h1>
 
-      {/* Step Navigation */}
+    
       <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
         {steps.map((s) => (
           <div
-            key={`step-${s.id}`} // ✅ unique key for steps
+            key={`step-${s.id}`} 
             className={`flex items-center gap-2 border-b-2 pb-4 ${
               s.id === activeStep ? "border-gray-800" : "border-gray-200"
             }`}
