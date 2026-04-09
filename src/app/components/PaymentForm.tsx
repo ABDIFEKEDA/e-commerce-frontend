@@ -6,7 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { PaymentFormSchema, PaymentFormInputs } from "../types";
 import Image from "next/image";
 
-const PaymentForm = () => {
+interface PaymentFormProps {
+  onSubmit: (data: PaymentFormInputs) => void;
+}
+
+const PaymentForm: React.FC<PaymentFormProps> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -14,11 +18,6 @@ const PaymentForm = () => {
   } = useForm<PaymentFormInputs>({
     resolver: zodResolver(PaymentFormSchema),
   });
-
-  const onSubmit = (data: PaymentFormInputs) => {
-    console.log("Payment data:", data);
-    alert("Payment submitted!");
-  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full max-w-md mx-auto">

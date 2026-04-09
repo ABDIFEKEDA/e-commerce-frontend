@@ -2,9 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ShippingFormInputs, shippingFormSchema } from '../types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
 
-const ShippingForm = () => {
+interface ShippingFormProps {
+  onSubmit: (data: ShippingFormInputs) => void;
+}
+
+const ShippingForm: React.FC<ShippingFormProps> = ({ onSubmit }) => {
     const { 
         register, 
         handleSubmit, 
@@ -19,13 +22,6 @@ const ShippingForm = () => {
             City: ''
         }
     });
-    const router = useRouter()
-
-    const onSubmit = (data: ShippingFormInputs) => {
-        console.log(data);
-        router.push("/cart?step=3",{scroll:false})
-       
-    };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4 max-w-md mx-auto p-4'>
